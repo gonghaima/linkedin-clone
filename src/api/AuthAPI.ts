@@ -1,2 +1,4 @@
 // eslint-disable-next-line @typescript-eslint/no-empty-function
-export const LoginAPI = () => {};
+export const LoginAPI = () => {
+  console.log('clicked!');
+};
