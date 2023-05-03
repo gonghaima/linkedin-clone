@@ -1,4 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/no-empty-function
-export const LoginAPI = () => {
-  console.log('clicked!');
+import { signInWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { auth } from '../firebaseConfig';
+
+export const LoginAPI = (email: string, password: string) => {
+  try {
+    signInWithEmailAndPassword(auth, email, password);
+  } catch (error) {
+    return error;
+  }
 };
