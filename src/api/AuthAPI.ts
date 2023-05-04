@@ -1,5 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/no-empty-function
-import { signInWithEmailAndPassword, getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import {
+  signInWithEmailAndPassword,
+  getAuth,
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup
+} from 'firebase/auth';
 import { auth } from '../firebaseConfig';
 
 export const LoginAPI = (email: string, password: string) => {
@@ -13,8 +19,18 @@ export const LoginAPI = (email: string, password: string) => {
 
 export const RegisterAPI = (email, password) => {
   try {
-    let response = createUserWithEmailAndPassword(auth, email, password);
+    const response = createUserWithEmailAndPassword(auth, email, password);
     return response;
+  } catch (err) {
+    return err;
+  }
+};
+
+export const GoogleSignInAPI = () => {
+  try {
+    const googleProvider = new GoogleAuthProvider();
+    const res = signInWithPopup(auth, googleProvider);
+    return res;
   } catch (err) {
     return err;
   }

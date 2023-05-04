@@ -6,8 +6,6 @@ import { getAuth } from 'firebase/auth';
 
 const env = import.meta.env;
 
-console.log(JSON.stringify(env));
-
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
