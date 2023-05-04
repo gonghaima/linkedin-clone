@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import '../Sass/LoginComponent.scss';
-import { LoginAPI } from '../api/AuthAPI';
+import { LoginAPI, RegisterAPI } from '../api/AuthAPI';
 
 const LoginComponent = () => {
-  const login = () => {
-    LoginAPI('', '');
+  const login = async () => {
+    const res = await LoginAPI(credentials.email, credentials.password);
+    // const res = RegisterAPI(credentials.email, credentials.password);
+    console.log({ res });
   };
-  const [credentials, setCredentials] = useState({});
+  const [credentials, setCredentials] = useState({
+    email: '',
+    password: '',
+  });
   return (
     <div className="login-wrapper">
       <div className="login-wrapper-inner">
