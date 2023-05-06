@@ -1,23 +1,26 @@
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 import {
   signInWithEmailAndPassword,
-  getAuth,
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
-  signInWithPopup
+  signInWithPopup,
+  UserCredential,
 } from 'firebase/auth';
 import { auth } from '../firebaseConfig';
 
-export const LoginAPI = (email: string, password: string) => {
+export const LoginAPI = (
+  email: string,
+  password: string
+): Promise<UserCredential> | unknown => {
   try {
     return signInWithEmailAndPassword(auth, email, password);
   } catch (error) {
-    alert(error.errors.message);
+    // alert(error.errors.message);
     return error;
   }
 };
 
-export const RegisterAPI = (email, password) => {
+export const RegisterAPI = (email: string, password: string) => {
   try {
     const response = createUserWithEmailAndPassword(auth, email, password);
     return response;
