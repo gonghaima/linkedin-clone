@@ -16,7 +16,7 @@ export default function PostStatus({ currentUser }) {
   const [postImage, setPostImage] = useState('');
 
   const sendStatus = async () => {
-    let object = {
+    const object = {
       status: status,
       timeStamp: getCurrentTimeStamp('LLL'),
       userEmail: currentUser?.email || 'defaultEmail@test.com',
@@ -89,10 +89,10 @@ export default function PostStatus({ currentUser }) {
       />
 
       <div>
-        {allStatuses.map((posts) => {
+        {allStatuses.map((posts, idx) => {
           return (
             <div key={posts.id}>
-              <PostsCard posts={posts} getEditData={getEditData} />
+              <PostsCard id={idx} posts={posts} getEditData={getEditData} />
             </div>
           );
         })}
