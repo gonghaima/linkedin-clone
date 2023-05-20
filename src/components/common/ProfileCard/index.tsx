@@ -21,7 +21,7 @@ export default function ProfileCard({ onEdit, currentUser }) {
   const uploadImage = () => {
     uploadImageAPI(
       currentImage,
-      currentUser.id,
+      currentUser?.id||'defaultIdxxxxx121',
       setModalOpen,
       setProgress,
       setCurrentImage
@@ -49,7 +49,7 @@ export default function ProfileCard({ onEdit, currentUser }) {
         progress={progress}
       />
       <div className="profile-card">
-        {currentUser.id === location?.state?.id ? (
+        {currentUser?.id === location?.state?.id ? (
           <div className="edit-btn">
             <HiOutlinePencil className="edit-icon" onClick={onEdit} />
           </div>
@@ -63,43 +63,43 @@ export default function ProfileCard({ onEdit, currentUser }) {
               onClick={() => setModalOpen(true)}
               src={
                 Object.values(currentProfile).length === 0
-                  ? currentUser.imageLink
+                  ? currentUser?.imageLink
                   : currentProfile?.imageLink
               }
               alt="profile-image"
             />
             <h3 className="userName">
               {Object.values(currentProfile).length === 0
-                ? currentUser.name
+                ? currentUser?.name
                 : currentProfile?.name}
             </h3>
             <p className="heading">
               {Object.values(currentProfile).length === 0
-                ? currentUser.headline
+                ? currentUser?.headline
                 : currentProfile?.headline}
             </p>
-            {(currentUser.city || currentUser.country) &&
+            {(currentUser?.city || currentUser?.country) &&
             (currentProfile?.city || currentProfile?.country) ? (
               <p className="location">
                 {Object.values(currentProfile).length === 0
-                  ? `${currentUser.city}, ${currentUser.country} `
-                  : `${currentProfile?.city}, ${currentUser.country}`}
+                  ? `${currentUser?.city}, ${currentUser?.country} `
+                  : `${currentProfile?.city}, ${currentUser?.country}`}
               </p>
             ) : (
               <></>
             )}
-            {currentUser.website || currentProfile?.website ? (
+            {currentUser?.website || currentProfile?.website ? (
               <a
                 className="website"
                 target="_blank"
                 href={
                   Object.values(currentProfile).length === 0
-                    ? `${currentUser.website}`
+                    ? `${currentUser?.website}`
                     : currentProfile?.website
                 }
               >
                 {Object.values(currentProfile).length === 0
-                  ? `${currentUser.website}`
+                  ? `${currentUser?.website}`
                   : currentProfile?.website}
               </a>
             ) : (
@@ -110,27 +110,27 @@ export default function ProfileCard({ onEdit, currentUser }) {
           <div className="right-info">
             <p className="college">
               {Object.values(currentProfile).length === 0
-                ? currentUser.college
+                ? currentUser?.college
                 : currentProfile?.college}
             </p>
             <p className="company">
               {Object.values(currentProfile).length === 0
-                ? currentUser.company
+                ? currentUser?.company
                 : currentProfile?.company}
             </p>
           </div>
         </div>
         <p className="about-me">
           {Object.values(currentProfile).length === 0
-            ? currentUser.aboutMe
+            ? currentUser?.aboutMe
             : currentProfile?.aboutMe}
         </p>
 
-        {currentUser.skills || currentProfile?.skills ? (
+        {currentUser?.skills || currentProfile?.skills ? (
           <p className="skills">
             <span className="skill-label">Skills</span>:&nbsp;
             {Object.values(currentProfile).length === 0
-              ? currentUser.skills
+              ? currentUser?.skills
               : currentProfile?.skills}
           </p>
         ) : (
@@ -142,7 +142,7 @@ export default function ProfileCard({ onEdit, currentUser }) {
         {allStatuses?.map((posts) => {
           return (
             <div key={posts.id}>
-              <PostsCard posts={posts} />
+              <PostsCard posts={posts} id={undefined} getEditData={undefined} />
             </div>
           );
         })}
