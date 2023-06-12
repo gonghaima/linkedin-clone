@@ -75,9 +75,9 @@ export default function LikeButton({ userId, postId, currentUser }) {
           </button>
 
           {comments.length > 0 ? (
-            comments.map((comment) => {
+            comments.map((comment, idx) => {
               return (
-                <div className="all-comments">
+                <div key={`comment_${idx}`} className="all-comments">
                   <p className="name">{comment.name}</p>
                   <p className="comment">{comment.comment}</p>
 

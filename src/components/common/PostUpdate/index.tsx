@@ -81,9 +81,9 @@ export default function PostStatus({ currentUser }) {
         sendStatus={sendStatus}
         isEdit={isEdit}
         updateStatus={updateStatus}
-        uploadPostImage={() => ({})}
-        postImage={() => ({})}
-        setPostImage={() => ({})}
+        uploadPostImage={uploadPostImage}
+        postImage={postImage}
+        setPostImage={setPostImage}
         setCurrentPost={setCurrentPost}
         currentPost={currentPost}
       />

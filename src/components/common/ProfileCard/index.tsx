@@ -147,6 +147,7 @@ export default function ProfileCard({ onEdit, currentUser }) {
           );
         })}
       </div>
+      FILE UPLOAD  MODEOL end.....
     </>
   );
 }

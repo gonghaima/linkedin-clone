@@ -80,9 +80,15 @@ const ModalComponent = ({
           id="pic-upload"
           type={'file'}
           hidden
-          onChange={(event) =>
-            uploadPostImage(event.target.files[0], setPostImage, setProgress)
-          }
+          onChange={(event) => {
+            console.log('uploading. .....');
+
+            return uploadPostImage(
+              event.target.files[0],
+              setPostImage,
+              setProgress
+            );
+          }}
         />
       </Modal>
     </>

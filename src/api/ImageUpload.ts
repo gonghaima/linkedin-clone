@@ -21,7 +21,7 @@ export const uploadImage = (
 
       setProgress(progress);
     },
-    (error) => {
+    (err) => {
       console.error(err);
     },
     () => {
